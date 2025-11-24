@@ -1,0 +1,50 @@
+# ft_onion
+My own .onion website deploy with Nginx Server
+
+🌐 Tor : c’est quoi ?
+
+Tor (The Onion Router) est un réseau conçu pour offrir anonymat et confidentialité sur Internet.
+Il fonctionne en chiffrant le trafic et en le faisant passer par plusieurs relais (3 en général) choisis aléatoirement :
+
+Entrée → connaît ton IP mais pas ta destination
+
+Relais intermédiaire → ne sait rien d’utile
+
+Sortie → voit la destination mais pas ton IP
+
+À chaque étape, une couche de chiffrement est retirée → d’où le nom "oignon" 🧅.
+
+🎯 Objectifs de Tor :
+
+Cacher ton identité (IP)
+
+Empêcher qu’on trace ton activité réseau
+
+Permettre de contourner la censure
+
+⚠️ Tor n’est pas magique : si tu te logues avec ton compte perso sur un site, tu n’es pas anonyme.
+
+🕸️ Les sites .onion : c’est quoi ?
+
+Les sites en .onion sont des services cachés Tor.
+Ils n’existent que à l’intérieur du réseau Tor et ne sont pas accessibles via un navigateur classique.
+
+Caractéristiques :
+
+L’URL .onion est un identifiant cryptographique généré automatiquement
+
+Pas de DNS classique → le routage est assuré par Tor
+
+Le serveur lui-même est caché (on ne connaît pas son IP)
+
+Le client et le serveur sont mutuellement anonymes
+
+À quoi ça sert ?
+
+Sites voulant rester anonymes
+
+Journalistes / lanceurs d’alerte (ex : SecureDrop)
+
+Services officiels (ex : Facebook a un .onion)
+
+Marchés noirs / activités illégales (là où Tor a mauvaise réputation)

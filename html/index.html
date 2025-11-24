@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>🧅 Créer son .onion avec Nginx</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.fade-in {
+			animation: fadeIn 0.6s ease-out forwards;
+		}
+		.step-card {
+			transition: all 0.3s ease;
+		}
+		.step-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+		}
+		.code-block {
+			background: #1e1e1e;
+			border-left: 4px solid #8b5cf6;
+		}
+		.onion-spin {
+			animation: spin 3s linear infinite;
+		}
+		@keyframes spin {
+			from { transform: rotate(0deg); }
+			to { transform: rotate(360deg); }
+		}
+	</style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 min-h-screen text-gray-100">
+	
+	<!-- Header -->
+	<header class="container mx-auto px-6 py-8 fade-in">
+		<div class="flex items-center justify-between">
+			<div class="flex items-center gap-4">
+				<span class="text-6xl onion-spin">🧅</span>
+				<div>
+					<h1 class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+						Créer son site .onion
+					</h1>
+					<p class="text-gray-400 mt-2">Déployer un service caché Tor avec Nginx</p>
+				</div>
+			</div>
+			<div class="hidden md:block">
+				<span class="px-4 py-2 bg-purple-600 rounded-full text-sm font-semibold">Docker + Nginx + Tor</span>
+			</div>
+		</div>
+	</header>
+
+	<!-- Introduction -->
+	<section class="container mx-auto px-6 py-8 fade-in">
+		<div class="bg-gray-800 rounded-2xl p-8 border border-purple-500/30 shadow-xl">
+			<h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+				<span>🎯</span> Pourquoi un site .onion ?
+			</h2>
+			<div class="grid md:grid-cols-3 gap-6 mt-6">
+				<div class="bg-gray-700/50 p-5 rounded-lg">
+					<div class="text-3xl mb-3">🔒</div>
+					<h3 class="font-semibold text-purple-400 mb-2">Anonymat complet</h3>
+					<p class="text-sm text-gray-300">Ton IP et celle de ton serveur restent cachées</p>
+				</div>
+				<div class="bg-gray-700/50 p-5 rounded-lg">
+					<div class="text-3xl mb-3">🌐</div>
+					<h3 class="font-semibold text-purple-400 mb-2">Anti-censure</h3>
+					<p class="text-sm text-gray-300">Accessible même dans les pays qui bloquent Tor</p>
+				</div>
+				<div class="bg-gray-700/50 p-5 rounded-lg">
+					<div class="text-3xl mb-3">🛡️</div>
+					<h3 class="font-semibold text-purple-400 mb-2">Chiffrement natif</h3>
+					<p class="text-sm text-gray-300">HTTPS intégré par défaut via Tor</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Steps -->
+	<section class="container mx-auto px-6 py-8">
+		<h2 class="text-3xl font-bold mb-8 text-center">📋 Guide de déploiement</h2>
+		
+		<!-- Step 1 -->
+		<div class="step-card bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+			<div class="flex items-start gap-4">
+				<div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">1</div>
+				<div class="flex-1">
+					<h3 class="text-2xl font-bold mb-3">📦 Structure du projet</h3>
+					<p class="text-gray-300 mb-4">Crée l'arborescence suivante :</p>
+					<div class="code-block rounded-lg p-4 font-mono text-sm overflow-x-auto">
+<pre class="text-green-400">ft_onion/
+├── Dockerfile
+├── nginx.conf
+├── torrc
+└── html/
+    └── index.html</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Step 2 -->
+		<div class="step-card bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+			<div class="flex items-start gap-4">
+				<div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">2</div>
+				<div class="flex-1">
+					<h3 class="text-2xl font-bold mb-3">🐳 Dockerfile</h3>
+					<p class="text-gray-300 mb-4">Configure l'environnement Docker avec Nginx et Tor :</p>
+					<div class="code-block rounded-lg p-4 font-mono text-sm overflow-x-auto">
+<pre class="text-blue-300">FROM debian:stable-slim
+
+RUN apt update && apt install -y nginx tor && apt clean
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY html /usr/share/nginx/html
+COPY torrc /etc/tor/torrc
+
+EXPOSE 80
+
+CMD service tor start && nginx -g 'daemon off;'</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Step 3 -->
+		<div class="step-card bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+			<div class="flex items-start gap-4">
+				<div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">3</div>
+				<div class="flex-1">
+					<h3 class="text-2xl font-bold mb-3">⚙️ Configuration Nginx</h3>
+					<p class="text-gray-300 mb-4">Fichier <code class="bg-gray-700 px-2 py-1 rounded">nginx.conf</code> :</p>
+					<div class="code-block rounded-lg p-4 font-mono text-sm overflow-x-auto">
+<pre class="text-yellow-300">events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 80;
+        server_name localhost;
+        
+        location / {
+            index index.html;
+            root /usr/share/nginx/html;
+        }
+    }
+}</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Step 4 -->
+		<div class="step-card bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+			<div class="flex items-start gap-4">
+				<div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">4</div>
+				<div class="flex-1">
+					<h3 class="text-2xl font-bold mb-3">🧅 Configuration Tor</h3>
+					<p class="text-gray-300 mb-4">Fichier <code class="bg-gray-700 px-2 py-1 rounded">torrc</code> - les lignes essentielles :</p>
+					<div class="code-block rounded-lg p-4 font-mono text-sm overflow-x-auto">
+<pre class="text-pink-300">HiddenServiceDir /var/lib/tor/hidden_service/
+HiddenServicePort 80 127.0.0.1:80</pre>
+					</div>
+					<div class="mt-4 bg-purple-900/30 border border-purple-500/50 rounded-lg p-4">
+						<p class="text-sm"><strong>💡 Explication :</strong></p>
+						<ul class="text-sm text-gray-300 mt-2 space-y-1 list-disc list-inside">
+							<li><code class="text-purple-300">HiddenServiceDir</code> : où Tor stocke les clés de ton service</li>
+							<li><code class="text-purple-300">HiddenServicePort</code> : redirige le port 80 du .onion vers ton Nginx local</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Step 5 -->
+		<div class="step-card bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+			<div class="flex items-start gap-4">
+				<div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">5</div>
+				<div class="flex-1">
+					<h3 class="text-2xl font-bold mb-3">🚀 Build & Run</h3>
+					<p class="text-gray-300 mb-4">Construis et lance le conteneur :</p>
+					<div class="code-block rounded-lg p-4 font-mono text-sm overflow-x-auto space-y-3">
+<pre class="text-green-300"># Build l'image
+docker build -t ft_onion .
+
+# Lance le conteneur
+docker run -d --name my_onion ft_onion</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Step 6 -->
+		<div class="step-card bg-gray-800 rounded-2xl p-8 mb-6 border border-gray-700">
+			<div class="flex items-start gap-4">
+				<div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">6</div>
+				<div class="flex-1">
+					<h3 class="text-2xl font-bold mb-3">🔍 Récupérer ton adresse .onion</h3>
+					<p class="text-gray-300 mb-4">Tor génère automatiquement ton URL .onion :</p>
+					<div class="code-block rounded-lg p-4 font-mono text-sm overflow-x-auto">
+<pre class="text-cyan-300">docker exec my_onion cat /var/lib/tor/hidden_service/hostname</pre>
+					</div>
+					<div class="mt-4 bg-green-900/30 border border-green-500/50 rounded-lg p-4">
+						<p class="text-sm"><strong>✅ Résultat attendu :</strong></p>
+						<p class="text-green-300 font-mono text-sm mt-2">abc123xyz456.onion</p>
+						<p class="text-xs text-gray-400 mt-2">Cette adresse est unique et basée sur la clé cryptographique de ton service</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Technical Details -->
+	<section class="container mx-auto px-6 py-8">
+		<div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-2xl p-8 border border-purple-500/30">
+			<h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+				<span>🔧</span> Comment ça marche ?
+			</h2>
+			<div class="grid md:grid-cols-2 gap-6">
+				<div>
+					<h3 class="font-semibold text-purple-300 mb-3 flex items-center gap-2">
+						<span>1️⃣</span> Côté serveur
+					</h3>
+					<ul class="space-y-2 text-sm text-gray-300">
+						<li>✦ Nginx écoute sur <code class="bg-gray-700 px-2 py-1 rounded">127.0.0.1:80</code></li>
+						<li>✦ Tor crée un circuit caché vers le réseau</li>
+						<li>✦ Génère une paire de clés (publique/privée)</li>
+						<li>✦ L'adresse .onion = hash de la clé publique</li>
+					</ul>
+				</div>
+				<div>
+					<h3 class="font-semibold text-purple-300 mb-3 flex items-center gap-2">
+						<span>2️⃣</span> Côté client
+					</h3>
+					<ul class="space-y-2 text-sm text-gray-300">
+						<li>✦ L'utilisateur ouvre Tor Browser</li>
+						<li>✦ Tape l'adresse .onion</li>
+						<li>✦ Tor route via 6 relais (3 client + 3 serveur)</li>
+						<li>✦ Connexion anonyme établie 🎉</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Tips -->
+	<section class="container mx-auto px-6 py-8">
+		<div class="bg-gray-800 rounded-2xl p-8 border border-gray-700">
+			<h2 class="text-2xl font-bold mb-6">💡 Tips & Astuces</h2>
+			<div class="grid md:grid-cols-2 gap-4">
+				<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+					<h3 class="font-semibold text-blue-300 mb-2">🔐 Sécurité</h3>
+					<p class="text-sm text-gray-300">Sauvegarde le dossier <code class="bg-gray-700 px-1 rounded">/var/lib/tor/hidden_service/</code> pour garder la même adresse .onion</p>
+				</div>
+				<div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4">
+					<h3 class="font-semibold text-yellow-300 mb-2">⚡ Performance</h3>
+					<p class="text-sm text-gray-300">Les sites .onion sont plus lents que le web classique (3+ sauts réseau)</p>
+				</div>
+				<div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+					<h3 class="font-semibold text-green-300 mb-2">📊 Logs</h3>
+					<p class="text-sm text-gray-300">Vérifie les logs : <code class="bg-gray-700 px-1 rounded">docker logs my_onion</code></p>
+				</div>
+				<div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4">
+					<h3 class="font-semibold text-purple-300 mb-2">🌐 Test local</h3>
+					<p class="text-sm text-gray-300">Teste d'abord sur <code class="bg-gray-700 px-1 rounded">localhost:80</code> avant de publier</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="container mx-auto px-6 py-12 text-center">
+		<div class="inline-block bg-gray-800 rounded-2xl px-8 py-6 border border-purple-500/30">
+			<p class="text-xl font-bold mb-2">🎉 Félicitations !</p>
+			<p class="text-gray-400">Ton site .onion est maintenant en ligne sur le réseau Tor</p>
+			<p class="text-sm text-gray-500 mt-4">Partage ton adresse .onion uniquement avec des personnes de confiance</p>
+		</div>
+		<div class="mt-8 text-gray-500 text-sm">
+			<p>Made with 💜 for the Dark Web | 2025</p>
+		</div>
+	</footer>
+
+	<script>
+		// Animation au scroll
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('fade-in');
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.step-card').forEach(card => {
+			observer.observe(card);
+		});
+	</script>
+</body>
+</html>
