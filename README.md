@@ -1,6 +1,8 @@
-# 🧅 ft_onion
-
-> **Déployer son propre site .onion avec Nginx et Docker**
+<div align="center">
+<img width="1460" height="337" alt="Image" src="https://github.com/user-attachments/assets/271c082b-15c4-434e-aabf-e60e588ff22f" />
+<h1>🧅 ft_onion </h1>
+  <h2>Déployer son propre site .onion avec Nginx et Docker</h2>
+</div>
 
 Un projet complet pour héberger un service caché Tor (Hidden Service) avec une architecture Docker Compose propre et persistante.
 
