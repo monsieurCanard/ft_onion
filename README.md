@@ -2,6 +2,17 @@
 <img width="1460" height="337" alt="Image" src="https://github.com/user-attachments/assets/271c082b-15c4-434e-aabf-e60e588ff22f" />
 <h1>🧅 ft_onion </h1>
   <h2>Déployer son propre site .onion avec Nginx et Docker</h2>
+  <p align="center">
+  <!-- <img src="https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python Version"> -->
+  <img src="https://img.shields.io/badge/Status-Active-success.svg?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg?style=for-the-badge" alt="Platform">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Docker-Compose-blue.svg?style=flat-square" alt="Threads">
+  <img src="https://img.shields.io/badge/Recursion-Configurable-blueviolet.svg?style=flat-square" alt="Recursion">
+  <img src="https://img.shields.io/badge/Logging-Full%20Support-informational.svg?style=flat-square" alt="Logging">
+</p>
 </div>
 
 Un projet complet pour héberger un service caché Tor (Hidden Service) avec une architecture Docker Compose propre et persistante.
