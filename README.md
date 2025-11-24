@@ -3,15 +3,16 @@
 <h1>🧅 ft_onion </h1>
   <h2>Déployer son propre site .onion avec Nginx et Docker</h2>
   <p align="center">
-  <!-- <img src="https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python Version"> -->
-  <img src="https://img.shields.io/badge/Status-Active-success.svg?style=for-the-badge" alt="Status">
-  <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg?style=for-the-badge" alt="Platform">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx">
+  <img src="https://img.shields.io/badge/Tor-7D4698?style=for-the-badge&logo=torproject&logoColor=white" alt="Tor">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Docker-Compose-blue.svg?style=flat-square" alt="Threads">
-  <img src="https://img.shields.io/badge/Recursion-Configurable-blueviolet.svg?style=flat-square" alt="Recursion">
-  <img src="https://img.shields.io/badge/Logging-Full%20Support-informational.svg?style=flat-square" alt="Logging">
+  <img src="https://img.shields.io/badge/Debian-A81D33?style=flat-square&logo=debian&logoColor=white" alt="Debian">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Status-Active-success.svg?style=flat-square" alt="Status">
 </p>
 </div>
 
