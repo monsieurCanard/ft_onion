@@ -5,6 +5,7 @@
 Un projet complet pour héberger un service caché Tor (Hidden Service) avec une architecture Docker Compose propre et persistante.
 
 ---
+<img width="2327" height="1356" alt="Image" src="https://github.com/user-attachments/assets/554488db-9ec4-4823-87e0-5954f18394f7" />
 
 ## 📚 Table des matières
 
