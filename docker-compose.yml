@@ -14,7 +14,7 @@ services:
     
     volumes:
       - ./tor/torrc:/etc/tor/torrc:ro
-      - /home/monsieurc/hidden_service_backup:/var/lib/tor/hidden_service
+      - /home/antgabri/hidden_service_backup:/var/lib/tor/hidden_service
 
     command: tor -f /etc/tor/torrc
     restart: unless-stopped
